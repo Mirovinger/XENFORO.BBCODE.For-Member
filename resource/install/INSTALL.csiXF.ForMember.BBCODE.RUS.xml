@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<addon addon_id="csiXF_bbCode_CECD5F95" title="(CSI/XF/BBCODE) For Member" version_string="1.0.0" version_id="1" url="http://cyberspace.industries/" install_callback_class="" install_callback_method="" uninstall_callback_class="" uninstall_callback_method="">
+  <admin_navigation/>
+  <admin_permissions/>
+  <admin_style_properties/>
+  <admin_templates/>
+  <admin_template_modifications/>
+  <code_events/>
+  <code_event_listeners/>
+  <cron/>
+  <email_templates/>
+  <email_template_modifications/>
+  <optiongroups/>
+  <permissions>
+    <permission_groups/>
+    <permissions/>
+    <interface_groups/>
+  </permissions>
+  <phrases>
+    <phrase title="csiXF_bbCode_CECD5F95_blockTitle" version_id="1" version_string="1.0.0"><![CDATA[Скрытая информация.]]></phrase>
+    <phrase title="csiXF_bbCode_CECD5F95_accessGranted" version_id="1" version_string="1.0.0"><![CDATA[Доступ разрешён.]]></phrase>
+    <phrase title="csiXF_bbCode_CECD5F95_accessDenied" version_id="1" version_string="1.0.0"><![CDATA[Доступ запрещён.]]></phrase>
+    <phrase title="csiXF_bbCode_CECD5F95_accessDeniedBlockMsg" version_id="1" version_string="1.0.0"><![CDATA[Ваш аккаунт не удовлетворяет условиям доступа к этой информации.]]></phrase>
+    <phrase title="csiXF_bbCode_CECD5F95_group" version_id="1" version_string="1.0.0"><![CDATA[Только для:]]></phrase>
+    <phrase title="csiXF_bbCode_CECD5F95_groupMember" version_id="1" version_string="1.0.0"><![CDATA[зарегистрированные пользователи]]></phrase>
+    <phrase title="csiXF_bbCode_CECD5F95_groupMember_desc" version_id="1" version_string="1.0.0"><![CDATA[Вы должны войти или зарегистрироваться для доступа к этой информации.]]></phrase>
+    <phrase title="custom_bb_code_for_member_title" version_id="1" version_string="1.0.0"><![CDATA[Только для зарегистрированных пользователей]]></phrase>
+    <phrase title="custom_bb_code_for_member_desc" version_id="1" version_string="1.0.0"><![CDATA[Отображение информации только для группы зарегистрированных пользователей.]]></phrase>
+  </phrases>
+  <route_prefixes/>
+  <style_properties/>
+  <templates>
+    <template title="csiXF_bbCode_CECD5F95_tag_for_member" version_id="1" version_string="1.0.0"><![CDATA[<xen:require css="csiXF_bbCode_CECD5F95.css" />
+<xen:if is="{$visitor.user_id}">
+  <div class="csiXF_bbCode_CECD5F95 bbCodeBlock bbCodeForMember accessGranted">
+    <div class="attribution type">{xen:phrase csiXF_bbCode_CECD5F95_blockTitle} {xen:phrase csiXF_bbCode_CECD5F95_accessGranted} {xen:phrase csiXF_bbCode_CECD5F95_group} {xen:phrase csiXF_bbCode_CECD5F95_groupMember}</div>
+    <div class="hideContainer">
+      <div class="hideText">{xen:raw $content}</div>
+    </div>
+  </div>
+<xen:else />
+  <div class="csiXF_bbCode_CECD5F95 bbCodeBlock bbCodeForMember accessDenied">
+    <div class="attribution type">{xen:phrase csiXF_bbCode_CECD5F95_blockTitle} {xen:phrase csiXF_bbCode_CECD5F95_accessDenied} {xen:phrase csiXF_bbCode_CECD5F95_group} {xen:phrase csiXF_bbCode_CECD5F95_groupMember}</div>
+    <div class="hideContainer">
+      <div class="hideText">
+        {xen:phrase csiXF_bbCode_CECD5F95_accessDeniedBlockMsg} {xen:phrase csiXF_bbCode_CECD5F95_groupMember_desc}<br />
+        <a href="{xen:link login}">{xen:if $xenOptions.registrationSetup.enabled, {xen:phrase log_in_or_sign_up}, {xen:phrase log_in}}</a>
+      </div>
+    </div>
+  </div>
+</xen:if>]]></template>
+    <template title="csiXF_bbCode_CECD5F95.css" version_id="1" version_string="1.0.0"><![CDATA[.bbCodeForMember.accessGranted {
+  border-color: #e5f9d7;
+  overflow: auto;
+}
+
+.bbCodeForMember.accessGranted .attribution {
+  color: {xen:property contentText};
+  background: #e5f9d7 url('{xen:property imagePath}/xenforo/gradients/form-button-white-25px.png') repeat-x 50% 0%;
+  border-bottom: 1px solid rgb(209, 244, 195);
+}
+
+.bbCodeForMember.accessGranted .hideContainer {
+  overflow: hidden;
+  position: relative;
+  font-style: normal;
+  font-size: 9pt;
+  background: #f5fced url('{xen:property imagePath}/xenforo/gradients/category-23px-light.png') repeat-x 50% 0%;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.bbCodeForMember.accessDenied {
+  border-color: #fa9e9e;
+  overflow: auto;
+}
+
+.bbCodeForMember.accessDenied .attribution {
+  color: {xen:property contentText};
+  background: #fa9e9e url('{xen:property imagePath}/xenforo/gradients/form-button-white-25px.png') repeat-x 50% 0%;
+  border-bottom: 1px solid #f98585;
+}
+
+.bbCodeForMember.accessDenied .hideContainer {
+  overflow: hidden;
+  position: relative;
+  font-style: italic;
+  font-size: 9pt;
+  background: #fde7e7 url('{xen:property imagePath}/xenforo/gradients/category-23px-light.png') repeat-x 50% 0%;
+  padding: 10px;
+  border-radius: 4px;
+}]]></template>
+  </templates>
+  <public_template_modifications/>
+  <bb_code_media_sites/>
+  <bb_codes>
+    <bb_code bb_code_id="for_member" bb_code_mode="callback" has_option="no" callback_class="CSI\BbCodeForMember\BbCode\Formatter\Base" callback_method="getBbCodeForMember" option_regex="" trim_lines_after="1" plain_children="0" disable_smilies="0" disable_nl2br="0" disable_autolink="0" allow_empty="0" allow_signature="0" editor_icon_url="" sprite_mode="0" sprite_params_x="" sprite_params_y="" active="1">
+      <replace_html><![CDATA[]]></replace_html>
+      <replace_html_email><![CDATA[]]></replace_html_email>
+      <replace_text><![CDATA[]]></replace_text>
+      <example><![CDATA[[FOR_MEMBER]Donec volutpat nibh sit amet libero ornare non laoreet arcu luctus. Donec id arcu quis mauris euismod placerat sit amet ut metus. Sed imperdiet fringilla sem eget euismod. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque adipiscing, neque ut pulvinar tincidunt, est sem euismod odio, eu ullamcorper turpis nisl sit amet velit. Nullam vitae nibh odio, non scelerisque nibh. Vestibulum ut est augue, in varius purus.[/FOR_MEMBER]]]></example>
+    </bb_code>
+  </bb_codes>
+</addon>
